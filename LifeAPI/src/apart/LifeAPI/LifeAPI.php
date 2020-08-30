@@ -32,11 +32,16 @@ class LifeAPI extends PluginBase implements Listener
 		$this->money = new Config($this->getDataFolder() . "money.yml" , Config::YAML);
 	}
 
-	private static $instance = null;
+	private static $instance;
 
-	public static function getInstance(){
-		return self::$instance;
-	}
+    public static function getInstance(): LifeAPI
+    {
+        if (!isset(self::$instance)) {
+            self::$instance = new LifeAPI();
+        }
+
+        return self::$instance;
+    }
 
 	public function onjoin(PlayerJoinEvent $event)
 	{
