@@ -18,6 +18,7 @@ class LifeAPI extends PluginBase implements Listener
 {
 	private $money;
 	private $config;
+　　　　  private static $instance;
 
 	public function onEnable()
 	{
