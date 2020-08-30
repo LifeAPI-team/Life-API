@@ -30,18 +30,10 @@ class LifeAPI extends PluginBase implements Listener
 			"language" => "japan",
 		));
 		$this->money = new Config($this->getDataFolder() . "money.yml" , Config::YAML);
+　　　　　　　　　 　self::$instance = $this;
 	}
 
-	private static $instance;
-
-    public static function getInstance(): LifeAPI
-    {
-        if (!isset(self::$instance)) {
-            self::$instance = new LifeAPI();
-        }
-
-        return self::$instance;
-    }
+　　　　　
 
 	public function onjoin(PlayerJoinEvent $event)
 	{
