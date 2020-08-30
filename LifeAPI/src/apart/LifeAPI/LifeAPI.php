@@ -65,6 +65,12 @@ class LifeAPI extends PluginBase implements Listener
 	public function removemoney($name,$money)
 	{
 		$mymoney = $this->money->get($name);
-		
+		$removemoney = floor($money);
+		if ($mymoney >= $removemoney)
+		{
+			$this->money->set($name,$mymoney - $removemoney);
+			$this->money->save();
+			$this->money->reload();
+		}
 	}
 }
