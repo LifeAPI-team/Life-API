@@ -2,6 +2,7 @@
 
 namespace apart\LifeAPI;
 
+use apart\LifeAPI\Form\moneyForm;
 use pocketmine\plugin\PluginBase;
 use pocketmine\Player;
 use pocketmine\event\Listener;
@@ -21,7 +22,7 @@ class LifeAPI extends PluginBase implements Listener
 	public function onEnable()
 	{
 		$this->getLogger()->info("[LIFEAPI]LifeAPIを読み込みました。");
-		$this->getServer()->getPluginManager()->registerEvent($this,$this);
+		$this->getServer()->getPluginManager()->registerEvents($this, $this);
 
 		///config
 		$this->config = new Config($this->getDataFolder() . "config.yml",Config::YAML,array(
@@ -29,6 +30,12 @@ class LifeAPI extends PluginBase implements Listener
 			"language" => "japan",
 		));
 		$this->money = new Config($this->getDataFolder() . "money.yml" , Config::YAML);
+	}
+
+	private static $instance = null;
+
+	public static function getInstance(){
+		return self::$instance;
 	}
 
 	public function onjoin(PlayerJoinEvent $event)
@@ -50,6 +57,12 @@ class LifeAPI extends PluginBase implements Listener
 	public function onCommand(CommandSender $sender, Command $command, string $label, array $args) : bool
 	{
 		$name = $sender->getName();
+		switch ($label)
+		{
+			case 'money':
+				$sender->sendForm(new moneyForm($this->money));
+				break;
+		}
 
 	}
 
@@ -72,5 +85,10 @@ class LifeAPI extends PluginBase implements Listener
 			$this->money->save();
 			$this->money->reload();
 		}
+	}
+	public function mymoney($name)
+	{
+		$mymoney = $this->money->get($name);
+		return $mymoney;
 	}
 }
