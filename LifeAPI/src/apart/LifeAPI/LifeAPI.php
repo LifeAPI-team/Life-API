@@ -28,6 +28,11 @@ class LifeAPI extends PluginBase implements Listener
 		));
 		$this->money = new Config($this->getDataFolder() . "money.yml", Config::YAML);
 	}
+	public function onLoad()
+	{
+		self::$instance = $this;
+	}
+
 	public function onjoin(PlayerJoinEvent $event)
 	{
 		$player = $event->getPlayer();
@@ -51,6 +56,12 @@ class LifeAPI extends PluginBase implements Listener
 		{
 			case 'money':
 				$sender->sendForm(new moneyForm($this->money));
+				return true;
+				break;
+
+			case 'mymoneys':
+				$mymoney = $this->money->get($name);
+				$sender->sendMessage("$mymoney 円もってるお");
 				return true;
 				break;
 		}
