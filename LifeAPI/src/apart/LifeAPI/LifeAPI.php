@@ -57,12 +57,12 @@ class LifeAPI extends PluginBase implements Listener
 		return true;
 
 	}
-	public function getInstance()
+	public static function getInstance()
 	{
 		return self::$instance;
 	}
 
-	public function addmoney($name,$money)
+	public  function addmoney($name,$money)
 	{
 		$mymoney = $this->money->get($name);
 		$addmoney = floor($money);
@@ -84,7 +84,12 @@ class LifeAPI extends PluginBase implements Listener
 	}
 	public function mymoney($name)
 	{
-		$mymoney = $this->money->get($name);
-		return $mymoney;
+		return $this->money->get($name);
+	}
+
+	public function onDisable()
+	{
+		$this->setting->save();
+		$this->money->save();
 	}
 }
