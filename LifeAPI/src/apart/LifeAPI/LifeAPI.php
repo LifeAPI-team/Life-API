@@ -51,8 +51,10 @@ class LifeAPI extends PluginBase implements Listener
 		{
 			case 'money':
 				$sender->sendForm(new moneyForm($this->money));
+				return true;
 				break;
 		}
+		return true;
 
 	}
 	public function getInstance()

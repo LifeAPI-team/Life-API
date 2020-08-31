@@ -28,7 +28,7 @@ class moneyForm implements Form
 			case 0:
 				//日本語で挨拶する
 				$player->chat("こんにちは！");
-				
+
 				break;
 			case 1:
 				//英語で挨拶する
