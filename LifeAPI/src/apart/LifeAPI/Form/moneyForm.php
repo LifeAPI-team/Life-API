@@ -6,7 +6,7 @@ use pocketmine\form\Form;
 use pocketmine\item\Item;
 use pocketmine\Player;
 use pocketmine\utils\TextFormat;
-
+use pocketmine\utils\Config;
 
 class moneyForm implements Form
 {
