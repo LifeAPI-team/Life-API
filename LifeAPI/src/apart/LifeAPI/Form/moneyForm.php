@@ -28,25 +28,20 @@ class moneyForm implements Form
 			case 0:
 				//日本語で挨拶する
 				$player->chat("こんにちは！");
+				return;
 				break;
 			case 1:
 				//英語で挨拶する
 				$player->chat("Hello!");
+				return;
 				break;
 			case 2:
-				//りんごを取得する
-				$inventory = $player->getInventory();
-				$item = Item::get(Item::APPLE, 0, 1);
-				if ($inventory->canAddItem($item)) {//アイテムが追加可能か調べる
-					$player->getInventory()->addItem($item);//アイテムを追加する
-					$player->sendMessage("りんごを取得しました！");
-				} else {
-					$player->sendMessage(TextFormat::RED . "アイテムを追加できませんでした。");
-				}
+
+				return;
 				break;
 			case 3:
 				//テストボタン
-				$player->sendMessage("テストボタンが押されました。");
+				return;
 				break;
 		}
 	}
