@@ -1,5 +1,4 @@
 <?php
-
 namespace apart\LifeAPI;
 
 use apart\LifeAPI\Form\moneyForm;
@@ -16,32 +15,25 @@ use pocketmine\utils\Config;
 
 class LifeAPI extends PluginBase implements Listener
 {
+	private static $instance;
 	private $money;
-	private $config;
-　　　　  private static $instance;
-
+	private $setting;
 	public function onEnable()
 	{
 		$this->getLogger()->info("[LIFEAPI]LifeAPIを読み込みました。");
 		$this->getServer()->getPluginManager()->registerEvents($this, $this);
-
-		///config
-		$this->config = new Config($this->getDataFolder() . "config.yml",Config::YAML,array(
+		$this->setting = new Config($this->getDataFolder() . "config.yml", Config::YAML, array(
 			"startmoney" => "1000",
 			"language" => "japan",
 		));
-		$this->money = new Config($this->getDataFolder() . "money.yml" , Config::YAML);
-　　　　　　　　　 　self::$instance = $this;
+		$this->money = new Config($this->getDataFolder() . "money.yml", Config::YAML);
 	}
-
-　　　　　
-
 	public function onjoin(PlayerJoinEvent $event)
 	{
 		$player = $event->getPlayer();
 		$name = $player->getName();
 
-		$startmoney = $this->config->get("startmoney");
+		$startmoney = $this->setting->get("startmoney");
 		if (!$this->money->exists($name))
 		{
 			$this->money->set($name,$startmoney);
@@ -63,7 +55,8 @@ class LifeAPI extends PluginBase implements Listener
 		}
 
 	}
-	public function getInstance(){
+	public function getInstance()
+	{
 		return self::$instance;
 	}
 
