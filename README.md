@@ -9,3 +9,4 @@ This plugin is MinecraftBE::PMMP Economyplugin.
 ```
 use apart\LifeAPI\LifeAPI;
 ```
+**※このPlugin・APIは現在開発中であり、現段階では動作が非常に不安定です。プルリクなど、ご協力お願いします。**
