@@ -63,6 +63,9 @@ class LifeAPI extends PluginBase implements Listener
 		}
 
 	}
+	public function getInstance(){
+		return self::$instance;
+	}
 
 	public function addmoney($name,$money)
 	{
