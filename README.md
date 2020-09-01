@@ -21,6 +21,10 @@ LifeAPI::getInstance()->addmoney($name,$money);
 ```
 LifeAPI::getInstance()->removemoney($name,$money);
 ```
+- Playerの所持金を0にする
+```
+LifeAPI::getInstance()->resetmoney($name);
+```
 
 ### Thanks!
 rain1208様  
