@@ -27,7 +27,7 @@ class LifeAPI extends PluginBase implements Listener
 			"language" => "japan",
 		));
 		$this->money = new Config($this->getDataFolder() . "money.yml", Config::YAML);
-	}
+	} 
 	public function onLoad()
 	{
 		self::$instance = $this;
@@ -61,7 +61,7 @@ class LifeAPI extends PluginBase implements Listener
 
 			case 'mymoneys':
 				$mymoney = $this->money->get($name);
-				$sender->sendMessage("$mymoney 円もってるお");
+				$sender->sendMessage("§a[Life] $mymoney 円所持しています。");
 				return true;
 				break;
 		}
