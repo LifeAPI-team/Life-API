@@ -9,4 +9,19 @@ This plugin is MinecraftBE::PMMP Economyplugin.
 ```
 use apart\LifeAPI\LifeAPI;
 ```
-**※このPlugin・APIは現在開発中であり、現段階では動作が非常に不安定です。プルリクなど、ご協力お願いします。**
+- Playerの所持金を取得する
+```
+LifeAPI::getInstance()->mymoney($name);
+```
+- Playerの所持金を追加する
+```
+LifeAPI::getInstance()->addmoney($name,$money);
+```
+- Playerの所持金を指定分削除する
+```
+LifeAPI::getInstance()->removemoney($name,$money);
+```
+
+### Thanks!
+rain1208様  
+tachan様  
