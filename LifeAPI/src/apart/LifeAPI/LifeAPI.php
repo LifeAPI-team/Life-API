@@ -98,7 +98,7 @@ class LifeAPI extends PluginBase implements Listener
 		return $this->money->get($name);
 	}
 	
-	public function mresetmoney($name)
+	public function resetmoney($name)
 	{
 		$this->money->set($name,0);
 		$this->money->save();
